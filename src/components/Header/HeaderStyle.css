@@ -1,0 +1,12 @@
+.header-img {
+    justify-content: start;
+    padding: 1rem 0 0 1rem;
+    box-sizing: border-box;
+}
+
+.header > p {
+    font-weight: bold;
+    font-size: 3.5rem;
+    color: var(--var-bg);
+    padding: 1rem 0;
+}
