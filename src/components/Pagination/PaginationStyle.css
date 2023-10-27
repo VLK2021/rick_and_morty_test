@@ -1,0 +1,66 @@
+.pagination {
+    margin: 3rem;
+}
+
+.pagination-btn {
+    background: var(--var-bg-header);
+    color: var(--var-bg-character);
+    font-weight: bold;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    margin: 0.5rem;
+}
+
+.pagination-btn:hover {
+    cursor: pointer;
+    color: var(--var-bg-header);
+    background: var(--var-bg-character);
+}
+
+/*.pagination-Button:hover {*/
+/*    cursor: pointer;*/
+/*    color: cornsilk;*/
+/*    background: cornflowerblue;*/
+/*}*/
+
+.AiOutline:hover {
+    fill: white;
+}
+
+.AiOutlineDouble:hover {
+    fill: white;
+}
+
+.doubleArrow {
+    width: 3rem;
+    height: 3rem;
+}
+
+.pagination-pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    background: salmon;
+    margin: 0.3rem;
+    border-radius: 1rem;
+    color: black;
+    font-weight: bold;
+    box-shadow:
+            inset 0 0 10px rgba(0, 0, 0, 1), 0 5px 20px rgba(0, 0, 0, .5),
+            inset 0 0 15px rgba(0, 0, 0, .2);
+}
+
+.active-page {
+    background: red;
+    color: yellow;
+    cursor: pointer;
+}
+
+.pagination-pages:hover {
+    cursor: pointer;
+    color: greenyellow;
+    background: darkgrey;
+}

@@ -5,11 +5,15 @@ import IData from "../../interfaces/IData";
 import {ICharacter} from "../../interfaces/ICharacter";
 
 
-export const getAllCharacters: any = createAsyncThunk<IData, void, { rejectValue: string }>(
+interface IPage {
+    page: number; // Визначаємо тип параметру "page"
+}
+
+export const getAllCharacters: any = createAsyncThunk<IData, IPage, { rejectValue: string }>(
     'characterSlice/getAllCharacters',
-    async (_, {rejectWithValue}): Promise<any> => {
+    async ({page}, {rejectWithValue}): Promise<any> => {
         try {
-            const dataA = await characterService.getAll();
+            const dataA = await characterService.getAll(page);
             return dataA;
         } catch (e: any) {
             return rejectWithValue(e.message);
@@ -22,8 +26,7 @@ export interface CharacterState {
     results: ICharacter[];
     count: number;
     pages: number;
-    next: string | null;
-    prev: string | null;
+    page: number;
     status: 'idle' | 'loading' | 'fulfilled' | 'rejected';
     error: any;
 }
@@ -34,8 +37,7 @@ const initialState: CharacterState = {
     results: [],
     count: 0,
     pages: 0,
-    next: '',
-    prev: '',
+    page: 1,
     status: 'idle',
     error: '',
 };
@@ -60,8 +62,6 @@ const characterSlice = createSlice({
                 state.info = action.payload.info;
                 state.count = action.payload.info.count;
                 state.pages = action.payload.info.pages;
-                state.next = action.payload.info.next;
-                state.prev = action.payload.info.prev;
             })
             .addCase(getAllCharacters.rejected, (state, action) => {
                 state.status = 'rejected';

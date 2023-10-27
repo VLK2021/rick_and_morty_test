@@ -3,7 +3,8 @@ import {urls} from "../constants/urls";
 
 
 const characterService = {
-    getAll: (): IRes<{}> => axiosService.get(urls.characters).then(value => value.data),
+    getAll: (page: number): IRes<{}> => axiosService.get(`${urls.characters}/?page=${page}&list=20`)
+        .then(value => value.data),
 }
 
 export {

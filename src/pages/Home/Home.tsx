@@ -4,19 +4,18 @@ import {useDispatch, useSelector} from "react-redux";
 import './HomeStyle.css';
 import {getAllCharacters} from "../../store/slices/character.slice";
 import {RootState} from '../../store';
-import {Character} from "../../components";
+import {Character, Pagination} from "../../components";
 
 
 const Home: FC = () => {
-    const {results, info, count, pages, next, prev} = useSelector((store: RootState) => store.characters);
-
+    const {results, info, count, pages, page} = useSelector((store: RootState) => store.characters);
     console.log(results);
     console.log(info);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllCharacters());
+        dispatch(getAllCharacters({page}));
     }, []);
 
 
@@ -27,7 +26,7 @@ const Home: FC = () => {
             </div>
 
             <div className={'home-pagination flex'}>
-                PAGINATION
+                <Pagination count={count}/>
             </div>
         </div>
     );
