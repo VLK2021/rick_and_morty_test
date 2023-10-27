@@ -7,8 +7,16 @@ body {
 :root{
   --var-bg: #202329;
   --var-bg-header: #F5F5F5;
-  --var-bg-character: #9E9E9E;
-  --var-bg-outlet: #3C3E44
+  --var-bg-character: #3C3E44;
+  --var-c-location: #9E9E9E
+}
+
+a{
+  text-decoration: none;
+}
+
+p{
+  margin: 0;
 }
 
 .width {

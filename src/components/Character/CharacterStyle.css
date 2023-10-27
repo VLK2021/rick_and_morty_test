@@ -1,0 +1,74 @@
+.character {
+    width: 42%;
+    height: 14rem;
+    background: var(--var-bg-character);
+    border-radius: 0.5rem;
+}
+
+.character-img {
+    width: 40%;
+    height: 100%;
+}
+
+.character-img > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.character-info {
+    width: 60%;
+    height: 100%;
+    padding: 0.7rem;
+    box-sizing: border-box;
+}
+
+.character-info-name {
+    font-size: 1.7rem;
+    color: var(--var-bg-header);
+    font-weight: bold;
+    transition: 2s;
+}
+
+.character-info-name:hover {
+    transform: scale(1.06, 1.06);
+    color: dodgerblue;
+}
+
+.character-info-second {
+    justify-content: start;
+}
+
+.green {
+    background: green;
+}
+
+.red {
+    background: red;
+}
+
+.character-info-second-circle {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 0.4rem;
+    margin-right: 0.7rem;
+}
+
+
+.character-info-seen, .character-info-location, .character-info-second {
+    margin-top: 1rem;
+}
+
+.character-info-second-def {
+    margin: 0 0.5rem;
+}
+
+.character-info-seen-text, .character-info-location-text {
+    color: var(--var-c-location);
+    font-size: 1rem;
+}
+
+.character-info-seen-title, .character-info-location-title, .character-info-second p {
+    font-size: 1.2rem;
+    color: var(--var-bg-header);
+}

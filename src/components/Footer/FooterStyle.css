@@ -2,7 +2,7 @@
     background: var(--var-bg);
     padding: 1rem;
     box-sizing: border-box;
-    color: var(--var-bg-character);
+    color: var(--var-c-location);
 }
 
 .footer-text {

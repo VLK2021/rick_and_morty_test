@@ -4,7 +4,7 @@ import characterReducer, {CharacterState} from './slices/character.slice';
 
 
 
-interface RootState {
+export interface RootState {
     characters: CharacterState;
 }
 
