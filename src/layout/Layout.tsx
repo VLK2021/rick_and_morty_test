@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import { Outlet } from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 
 import './LayoutStyle.css';
 import {Footer, Header} from "../components";

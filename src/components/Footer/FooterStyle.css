@@ -21,11 +21,15 @@
 }
 
 .footer-logo > img {
-
+    width: 3.5rem;
 }
 
-.footer-links-twitter{
-    margin:0 1.5rem;
+.footer-links img {
+    width: 1.5rem;
+}
+
+.footer-links-twitter {
+    margin: 0 1.5rem;
 }
 
 
