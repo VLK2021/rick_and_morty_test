@@ -9,7 +9,7 @@ interface IProps {
     char: ICharacter
 }
 
-const setVoteClass = (vote: string) => {
+export const setVoteClass = (vote: string) => {
     if (vote === "Alive") {
         return 'green'
     } else {

@@ -1,0 +1,65 @@
+.singleCharacter {
+    background: var(--var-bg);
+    padding: 3rem 0 0 0;
+    margin-bottom: 5rem;
+}
+
+.singleCharacter-block{
+    width: 80%;
+    background: var(--var-bg-character);
+}
+
+.singleCharacter-block-img{
+    width: 40%;
+}
+
+.singleCharacter-block-img > img {
+    width: 100%;
+}
+
+.singleCharacter-block-info{
+    width: 60%;
+    height: 100%;
+    padding: 0.7rem;
+    box-sizing: border-box;
+}
+
+.singleCharacter-block-info-name{
+    font-size: 4rem;
+    color: var(--var-bg-header);
+    font-weight: bold;
+}
+
+.singleCharacter-block-info-second{
+    justify-content: start;
+}
+
+.singleCharacter-block-info-second-circle{
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 0.9rem;
+    margin-right: 1rem;
+}
+
+.singleCharacter-block-info-location-title, .singleCharacter-block-info-second p, .singleCharacter-block-info-title {
+    font-size: 2rem;
+    color: var(--var-bg-header);
+}
+
+.singleCharacter-block-info-location-text, .singleCharacter-block-info-text{
+    color: var(--var-c-location);
+    font-size: 1.2rem;
+}
+
+.singleCharacter-block-info-second-def{
+    margin: 0 1rem;
+}
+
+.singleCharacter-block-info-seen, .singleCharacter-block-info-location, .singleCharacter-block-info-second {
+    margin-top: 1.5rem;
+}
+
+.singleCharacter-block-info-other{
+    font-size: 1rem;
+    color: var(--var-bg-header);
+}

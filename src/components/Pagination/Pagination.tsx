@@ -40,7 +40,7 @@ const Pagination = ({count}) => {
         //побудова останнього блоку сторінок
         if (page > 40) {
             setStartPage(page);
-            setEndPage(page +1);
+            setEndPage(page + 1);
         }
 
         //динамічна зміна сторінок

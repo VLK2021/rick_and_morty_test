@@ -2,6 +2,10 @@
     background: var(--var-bg);
 }
 
+.home-search{
+    margin: 2rem 0;
+}
+
 .home-characters-block {
     display: flex;
     flex-wrap: wrap;

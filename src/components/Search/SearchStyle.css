@@ -1,0 +1,40 @@
+.search {
+    background: var(--var-bg);
+    justify-content: space-between;
+    padding: 0 5rem;
+    box-sizing: border-box;
+}
+
+.search-btn {
+    width: 15%;
+    justify-content: start;
+}
+
+.search-second {
+    width: 70%;
+    justify-content: start;
+}
+
+button {
+    width: 9rem;
+    background: var(--var-bg-header);
+    color: var(--var-bg);
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0.8rem;
+    margin: 0 0 0 1rem;
+    border-radius: 0.5rem;
+}
+
+select, input {
+    width: 9rem;
+    font-weight: bold;
+    padding: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+    margin: 0 1rem;
+}
+
+input {
+    font-size: 0.6rem;
+}
