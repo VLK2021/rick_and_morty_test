@@ -18,35 +18,12 @@
     background: var(--var-bg-character);
 }
 
-/*.pagination-Button:hover {*/
-/*    cursor: pointer;*/
-/*    color: cornsilk;*/
-/*    background: cornflowerblue;*/
-/*}*/
-
-.AiOutline:hover {
-    fill: white;
-}
-
-.AiOutlineDouble:hover {
-    fill: white;
-}
-
-.doubleArrow {
-    width: 3rem;
-    height: 3rem;
-}
-
 .pagination-pages {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2rem;
-    width: 2rem;
-    background: salmon;
+    width: 2.8rem;
+    height: 2.8rem;
+    background: gainsboro;
     margin: 0.3rem;
-    border-radius: 1rem;
-    color: black;
+    color: var(--var-bg-character);
     font-weight: bold;
     box-shadow:
             inset 0 0 10px rgba(0, 0, 0, 1), 0 5px 20px rgba(0, 0, 0, .5),
@@ -54,8 +31,8 @@
 }
 
 .active-page {
-    background: red;
-    color: yellow;
+    color: var(--var-bg-header);
+    background: var(--var-bg-character);
     cursor: pointer;
 }
 
