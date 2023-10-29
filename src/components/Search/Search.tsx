@@ -5,10 +5,12 @@ import {useSearchParams} from 'react-router-dom';
 import './SearchStyle.css';
 import {useDispatch} from "react-redux";
 import {characterActions, searchCharacters} from "../../store/slices/character.slice";
+import {PopUp} from "../../pages";
 
 
 const Search = () => {
     const [visible, setVisible] = useState(false);
+    const [visibleCheckbox, setVisibleCheckbox] = useState(false);
     const {register, handleSubmit, setValue} = useForm();
 
     const [query, setQuery] = useSearchParams();
@@ -35,6 +37,11 @@ const Search = () => {
         setQuery('');
     }
 
+    const handlerCheckbox = () => {
+        setVisibleCheckbox(!visibleCheckbox);
+    }
+
+
     return (
         <div className={'search width flex'}>
             <div className={'search-btn flex'}>
@@ -44,22 +51,18 @@ const Search = () => {
             {
                 visible &&
                 <div className={'search-second flex'}>
-                    <select>
-                        <option value="">Character</option>
-                        <option value="">Location</option>
-                        <option value="">Episodes</option>
-                    </select>
+                    <button className={'select'} onClick={handlerCheckbox}>Вибрати опції</button>
 
-                    <form onChange={handleSubmit(submit)}>
+                    {visibleCheckbox && <PopUp setVisibleCheckbox={setVisibleCheckbox} visibleCheckbox={visibleCheckbox}/>}
+
+                    <form onClick={handleSubmit(submit)}>
                         <input type="text" defaultValue={''}
                                placeholder={'Add key words to find'} {...register('search')}/>
-                    </form>
 
-                    <button>find</button>
+                        <button>find</button>
+                    </form>
                 </div>
             }
-
-
         </div>
     );
 };

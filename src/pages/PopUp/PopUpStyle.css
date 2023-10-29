@@ -1,0 +1,79 @@
+.popUp {
+    position: absolute;
+    width: 85rem;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    right: 0;
+    bottom: 0;
+}
+
+.close{
+    position: absolute;
+    width: 2rem;
+    padding: 0.5rem;
+    background: var(--var-bg-header);
+    color: red;
+    font-weight: bold;
+    top: 5rem;
+    right: 2rem;
+    border-radius: 0.5rem;
+}
+
+ul {
+    width: 12rem;
+    background: var(--var-bg-header);
+    padding: 0;
+}
+
+label {
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    background: var(--var-bg-header);
+    font-weight: bold;
+}
+
+li {
+    list-style: none;
+    background: var(--var-bg-header);
+    color: var(--var-bg-character);
+    border: 1px solid grey;
+}
+
+.inputPopUp {
+    margin: 0 0 0 5rem;
+}
+
+.characterCurrent, .characterLocation, .episodesCurrent {
+    width: 12rem;
+    background: var(--var-bg-header);
+    margin: 5.8rem 0 0 2rem;
+}
+
+.characterLocation {
+    margin: -0.5rem 0 0 2rem;
+}
+
+.episodesCurrent {
+    margin: -3.2rem 0 0 2rem;
+}
+
+
+.popUp-btn {
+    margin: -6.4rem 0 0 3rem;
+    border-radius: 0;
+}
+
+.characterCurrent > ul {
+    width: 100%;
+    margin: 0;
+}
+
+.inpCurrent {
+    width: 10rem;
+    border-radius: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 1rem;
+    font-style: italic;
+}
