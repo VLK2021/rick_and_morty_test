@@ -8,12 +8,13 @@ import {Character, Pagination, Search} from "../../components";
 
 
 const Home: FC = () => {
-    const {results, count, page} = useSelector((store: RootState) => store.characters);
+    const {results, page} = useSelector((store: RootState) => store.characters);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getAllCharacters({page}));
     }, [page]);
+
 
 
     return (
@@ -27,7 +28,7 @@ const Home: FC = () => {
             </div>
 
             <div className={'home-pagination flex'}>
-                <Pagination count={count}/>
+                <Pagination/>
             </div>
         </div>
     );

@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AiOutlineLeft, AiOutlineRight} from "react-icons/ai";
 
 import './PaginationStyle.css';
-import {getAllCharacters} from "../../store/slices/character.slice";
+import {getAllCharacters, searchCharacters} from "../../store/slices/character.slice";
+import {RootState} from "../../store";
 
 
-// @ts-ignore
-const Pagination = ({count}) => {
-    const endPagesFinal = Math.ceil(count / 82.6);
+const Pagination = () => {
+    const {pagesCount, name} = useSelector((store: RootState) => store.characters);
 
     const dispatch = useDispatch();
-
 
     const [startPage, setStartPage] = useState(1);
     const [endPage, setEndPage] = useState(0);
@@ -20,8 +19,12 @@ const Pagination = ({count}) => {
     const pages = [];
 
     useEffect(() => {
-        setEndPage(endPagesFinal);
-    }, [endPagesFinal]);
+        if (pagesCount < 10) {
+            setEndPage(pagesCount);
+        } else {
+            setEndPage(pagesCount / (pagesCount / 10));
+        }
+    }, [pagesCount]);
 
 
     for (let i = startPage; i <= endPage; i++) {
@@ -29,32 +32,64 @@ const Pagination = ({count}) => {
     }
 
     const onPageChange = (page: number) => {
-        //найменша та найбільша сторінки. Заборона побудови сторінок
-        if (page < 1) {
-            return;
-        }
-        if (page === 42) {
-            return;
+        if (name) {
+            //найменша та найбільша сторінки. Заборона побудови сторінок
+            if (page < 1) {
+                return;
+            }
+            if (page === pagesCount) {
+                return;
+            }
+
+            //побудова останнього блоку сторінок
+            if (page > pagesCount - 1) {
+                setStartPage(page);
+                setEndPage(page + 1);
+            }
+
+            //динамічна зміна сторінок
+            if (page > endPage && page < 33) {
+                setStartPage(page);
+                setEndPage(page + 9);
+            }
+            if (page < startPage && page > 1) {
+                setEndPage(page);
+                setStartPage(page - 9);
+            }
+
+            dispatch(searchCharacters({page, name}));
+            setPage(page);
+            console.log('searchCharacters');
+        } else {
+            //найменша та найбільша сторінки.Заборона побудови сторінок
+            if (page < 1) {
+                return;
+            }
+            if (page === pagesCount) {
+                return;
+            }
+
+            //побудова останнього блоку сторінок
+            if (page > pagesCount - 2) {
+                setStartPage(page);
+                setEndPage(page + 1);
+            }
+
+            //динамічна зміна сторінок
+            if (page > endPage && page < 33) {
+                setStartPage(page);
+                setEndPage(page + 9);
+            }
+            if (page < startPage && page > 1) {
+                setEndPage(page);
+                setStartPage(page - 9);
+            }
+
+            dispatch(getAllCharacters({page}));
+            setPage(page);
+            console.log('getAllCharacters');
         }
 
-        //побудова останнього блоку сторінок
-        if (page > 40) {
-            setStartPage(page);
-            setEndPage(page + 1);
-        }
-
-        //динамічна зміна сторінок
-        if (page > endPage && page < 33) {
-            setStartPage(page);
-            setEndPage(page + 9);
-        }
-        if (page < startPage && page > 1) {
-            setEndPage(page);
-            setStartPage(page - 9);
-        }
-
-        dispatch(getAllCharacters({page}));
-        setPage(page);
     };
 
     return (
@@ -92,3 +127,6 @@ const Pagination = ({count}) => {
     );
 };
 export {Pagination};
+
+
+
