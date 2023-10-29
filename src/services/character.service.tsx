@@ -3,22 +3,25 @@ import {urls} from "../constants/urls";
 
 
 const characterService = {
-    getAll: (page: number): IRes<{}> => axiosService.get(`${urls.characters}/?page=${page}&list=20`)
+    getAll: (page: number): IRes<{}> => axiosService
+        .get(`${urls.characters}/?page=${page}&list=20`)
         .then(value => value.data),
 
-    searchCharacters: (page: number, name: string): IRes<{}> => axiosService.get(`${urls.characters}/?page=${page}&list=20&name=${name}`)
+    searchCharacters: (page: number, name: string): IRes<{}> => axiosService
+        .get(`${urls.characters}/?page=${page}&list=20&name=${name}`)
         .then(value => value.data),
 
-    filteredSearchCharacters: (page:number, searchParams: string | string[][] | Record<string, string> | URLSearchParams | undefined) => {
-        const queryParams = new URLSearchParams(searchParams);
-        return axiosService.get(`${urls.characters}/?page=${page}&list=20&${queryParams.toString()}`);
-    }
+    filteredSearchCharacters: (page:number, word:string): IRes<{}> => axiosService
+        .get(`${urls.characters}/?page=${page}&list=20&${word}`)
+        .then(value => value.data),
 
+    filteredSearchLocation: (page:number, word:string): IRes<{}> => axiosService
+        .get(`${urls.location}/?page=${page}&list=20&${word}`)
+        .then(value => value.data),
 
-    //https://rickandmortyapi.com/api/character/?name=rick&status=alive
-    //https://rickandmortyapi.com/api/location/
-    //https://rickandmortyapi.com/api/episode/
-
+    filteredSearchEpisodes: (page:number, word:string): IRes<{}> => axiosService
+        .get(`${urls.episode}/?page=${page}&list=20&${word}`)
+        .then(value => value.data),
 }
 
 export {

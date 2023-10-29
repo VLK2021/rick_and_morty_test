@@ -3,12 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {AiOutlineLeft, AiOutlineRight} from "react-icons/ai";
 
 import './PaginationStyle.css';
-import {getAllCharacters, searchCharacters} from "../../store/slices/character.slice";
+import {filterCharacters, getAllCharacters, searchCharacters} from "../../store/slices/character.slice";
 import {RootState} from "../../store";
 
 
 const Pagination = () => {
-    const {pagesCount, name} = useSelector((store: RootState) => store.characters);
+    const {pagesCount, name, word} = useSelector((store: RootState) => store.characters);
 
     const dispatch = useDispatch();
 
@@ -89,6 +89,66 @@ const Pagination = () => {
             setPage(page);
             console.log('getAllCharacters');
         }
+
+        // if (!word) {
+        //         //найменша та найбільша сторінки.Заборона побудови сторінок
+        //         if (page < 1) {
+        //             return;
+        //         }
+        //         if (page === pagesCount) {
+        //             return;
+        //         }
+        //
+        //         //побудова останнього блоку сторінок
+        //         if (page > pagesCount - 2) {
+        //             setStartPage(page);
+        //             setEndPage(page + 1);
+        //         }
+        //
+        //         //динамічна зміна сторінок
+        //         if (page > endPage && page < 33) {
+        //             setStartPage(page);
+        //             setEndPage(page + 9);
+        //         }
+        //         if (page < startPage && page > 1) {
+        //             setEndPage(page);
+        //             setStartPage(page - 9);
+        //         }
+        //
+        //         dispatch(getAllCharacters({page}));
+        //         setPage(page);
+        //         console.log('getAllCharacters');
+        //     }
+        //
+        // if (word) {
+        //     //найменша та найбільша сторінки. Заборона побудови сторінок
+        //     if (page < 1) {
+        //         return;
+        //     }
+        //     if (page === pagesCount) {
+        //         return;
+        //     }
+        //
+        //     //побудова останнього блоку сторінок
+        //     if (page > pagesCount - 1) {
+        //         setStartPage(page);
+        //         setEndPage(page + 1);
+        //     }
+        //
+        //     //динамічна зміна сторінок
+        //     if (page > endPage && page < 33) {
+        //         setStartPage(page);
+        //         setEndPage(page + 9);
+        //     }
+        //     if (page < startPage && page > 1) {
+        //         setEndPage(page);
+        //         setStartPage(page - 9);
+        //     }
+        //
+        //     dispatch(filterCharacters({page, word}));
+        //     setPage(page);
+        //     console.log('filterCharacters');
+        // }
 
     };
 

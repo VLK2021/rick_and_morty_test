@@ -7,7 +7,8 @@ import {ICharacter} from "../../interfaces/ICharacter";
 
 interface IPage {
     page: number;
-    name:string; // Визначаємо тип параметру "page"
+    name:string;
+    word: string;
 }
 
 export const getAllCharacters: any = createAsyncThunk<IData, IPage, { rejectValue: string }>(
@@ -34,6 +35,19 @@ export const searchCharacters:any = createAsyncThunk<IData, IPage, { rejectValue
     }
 );
 
+export const filterCharacters: any = createAsyncThunk<IData, IPage, { rejectValue: string }>(
+    'characterSlice/filterCharacters',
+    async ({page, word}, {rejectWithValue}): Promise<any> => {
+        try {
+            const dataFC = await characterService.filteredSearchCharacters(page, word);
+            console.log(dataFC);
+            return dataFC;
+        } catch (e: any) {
+            return rejectWithValue(e.message);
+        }
+    }
+);
+
 export interface CharacterState {
     info: {};
     results: ICharacter[];
@@ -41,6 +55,7 @@ export interface CharacterState {
     pagesCount: number;
     page: number;
     name: string;
+    word: string;
     status: 'idle' | 'loading' | 'fulfilled' | 'rejected';
     error: any;
 }
@@ -53,6 +68,7 @@ const initialState: CharacterState = {
     pagesCount: 0,
     page: 1,
     name: '',
+    word: '',
     status: 'idle',
     error: '',
 };
@@ -66,6 +82,9 @@ const characterSlice = createSlice({
     reducers: {
         changeName: (state, action) => {
             state.name = action.payload
+        },
+        changeWord: (state, action) => {
+            state.word = action.payload
         }
     },
 
@@ -76,6 +95,10 @@ const characterSlice = createSlice({
                 state.error = null;
             })
             .addCase(searchCharacters.pending, state => {
+                state.status = 'loading';
+                state.error = null;
+            })
+            .addCase(filterCharacters.pending, state => {
                 state.status = 'loading';
                 state.error = null;
             })
@@ -94,17 +117,28 @@ const characterSlice = createSlice({
                 state.count = action.payload.info.count;
                 state.pagesCount = action.payload.info.pages;
             })
+            .addCase(filterCharacters.fulfilled, (state, action) => {
+                state.status = 'fulfilled';
+                state.results = action.payload.results;
+                state.info = action.payload.info;
+                state.count = action.payload.info.count;
+                state.pagesCount = action.payload.info.pages;
+            })
 
 
             .addCase(getAllCharacters.rejected, (state, action) => {
                 state.status = 'rejected';
                 state.error = action.payload;
             })
+            .addCase(filterCharacters.rejected, (state, action) => {
+                state.status = 'rejected';
+                state.error = action.payload;
+            })
     }
 });
 
-const {actions: {changeName}} = characterSlice;
-const characterActions = {changeName};
+const {actions: {changeName, changeWord}} = characterSlice;
+const characterActions = {changeName, changeWord};
 
 export {characterActions};
 export default characterSlice.reducer;

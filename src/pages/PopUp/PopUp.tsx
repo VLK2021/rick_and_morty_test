@@ -3,6 +3,9 @@ import {useForm} from "react-hook-form";
 import {useSearchParams} from "react-router-dom";
 
 import './PopUpStyle.css';
+import {useDispatch, useSelector} from "react-redux";
+import {characterActions, filterCharacters} from "../../store/slices/character.slice";
+import {RootState} from "../../store";
 
 
 interface PopUpProps {
@@ -11,7 +14,9 @@ interface PopUpProps {
 }
 
 const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
-    const {register, handleSubmit, setValue} = useForm();
+    const {page} = useSelector((store: RootState) => store.characters);
+    const {register, handleSubmit} = useForm();
+    const dispatch = useDispatch();
 
     const [visibleCharacterCurrent, setVisibleCharacterCurrent] = useState(false);
     const [visibleLocationCurrent, setVisibleLocationCurrent] = useState(false);
@@ -20,28 +25,35 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
     const [query, setQuery] = useSearchParams();
 
     const submit = (data: any) => {
-        console.log(data);
         if (data.episodes === true) {
-            if (data.name || data.episode){
-                setQuery({name: data.name, episode: data.episode})
+            if (data.name || data.episode) {
+                setQuery({name: data.name, episode: data.episode});
             }
         }
-
         if (data.location === true) {
             if (data.name || data.type || data.dimension) {
-                setQuery({name: data.name, type: data.type, dimension: data.dimension})
+                setQuery({name: data.name, type: data.type, dimension: data.dimension});
             }
         }
-
         if (data.character === true) {
-
+            if (data.name || data.status || data.species || data.type || data.gender) {
+                setQuery({
+                    name: data.name,
+                    status: data.status,
+                    species: data.species,
+                    type: data.type,
+                    gender: data.gender
+                });
+            }
         }
-
     }
 
     useEffect(() => {
+        const word = query.toString();
+        dispatch(filterCharacters({page, word}));
+        dispatch(characterActions.changeWord(word));
+    }, [query]);
 
-    }, []);
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.name === 'character') {
