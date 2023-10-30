@@ -11,6 +11,7 @@ const Pagination = () => {
     const {pagesCount, inputCurrent, word, checkboxName} = useSelector((store: RootState) => store.characters);
     const dispatch = useDispatch();
 
+
     const [startPage, setStartPage] = useState(1);
     const [endPage, setEndPage] = useState(0);
     const [page, setPage] = useState(1);
@@ -61,7 +62,7 @@ const Pagination = () => {
         if(inputCurrent) {
             dispatch(fetchCharacters({page, inputCurrent}));
         } else if (word && checkboxName) {
-            dispatch(fetchCharacters({page, word}));
+            dispatch(fetchCharacters({page, word, checkboxName}));
         } else {
             dispatch(fetchCharacters({page}));
         }

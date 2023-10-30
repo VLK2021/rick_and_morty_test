@@ -11,15 +11,16 @@ const Home: FC = () => {
     const {results, page, inputCurrent, word, checkboxName} = useSelector((store: RootState) => store.characters);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         if (inputCurrent) {
             dispatch(fetchCharacters({page, inputCurrent}));
         } else if (word) {
-            dispatch(fetchCharacters({page, word}));
+            dispatch(fetchCharacters({page, word, checkboxName}));
         } else {
             dispatch(fetchCharacters({page}));
         }
-    }, [dispatch, inputCurrent, page, word, checkboxName]);
+    }, [dispatch, inputCurrent, page, word]);
 
 
     return (

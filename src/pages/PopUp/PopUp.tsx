@@ -24,6 +24,16 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
 
     const [query, setQuery] = useSearchParams();
 
+
+    useEffect(() => {
+        const word = query.toString();
+        if (word) {
+            dispatch(fetchCharacters({page, word, checkboxName}));
+        }
+        dispatch(characterActions.changeWord(word));
+    }, [dispatch, page, query]);
+
+
     const submit = (data: any) => {
         if (data.episodes === true) {
             if (data.name || data.episode) {
@@ -48,17 +58,6 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
         }
     }
 
-    useEffect(() => {
-        const word = query.toString();
-        if (word) {
-        dispatch(fetchCharacters({page, word}));
-        }
-        dispatch(characterActions.changeWord(word));
-    }, [query]);
-
-
-
-
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.name === 'character') {
             setVisibleCharacterCurrent(!visibleCharacterCurrent);
@@ -73,6 +72,7 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
             dispatch(characterActions.changeCheckboxName(e.target.name));
         }
     };
+
 
     const close = () => {
         setVisibleCheckbox(!visibleCheckbox);
