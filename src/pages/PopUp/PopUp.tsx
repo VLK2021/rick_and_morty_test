@@ -14,7 +14,7 @@ interface PopUpProps {
 }
 
 const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
-    const {page} = useSelector((store: RootState) => store.characters);
+    const {page, checkboxName} = useSelector((store: RootState) => store.characters);
     const {register, handleSubmit} = useForm();
     const dispatch = useDispatch();
 
@@ -50,20 +50,27 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
 
     useEffect(() => {
         const word = query.toString();
+        if (word) {
         dispatch(fetchCharacters({page, word}));
+        }
         dispatch(characterActions.changeWord(word));
     }, [query]);
+
+
 
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.name === 'character') {
             setVisibleCharacterCurrent(!visibleCharacterCurrent);
+            dispatch(characterActions.changeCheckboxName(e.target.name));
         }
         if (e.target.name === 'location') {
             setVisibleLocationCurrent(!visibleLocationCurrent);
+            dispatch(characterActions.changeCheckboxName(e.target.name));
         }
         if (e.target.name === 'episodes') {
             setVisibleEpisodesCurrent(!visibleEpisodesCurrent);
+            dispatch(characterActions.changeCheckboxName(e.target.name));
         }
     };
 

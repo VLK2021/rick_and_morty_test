@@ -23,7 +23,7 @@ const Search = () => {
         dispatch(fetchCharacters({page, inputCurrent}));
         dispatch(characterActions.changeName(inputCurrent));
         setValue('search', inputCurrent);
-    }, [query]);
+    }, [dispatch, query, setValue]);
 
 
     const submit = (data: any) => {
@@ -35,6 +35,7 @@ const Search = () => {
         setVisible(!visible);
         setValue('search', '');
         setQuery('');
+        dispatch(characterActions.changeWord(''));
     }
 
     const handlerCheckbox = () => {

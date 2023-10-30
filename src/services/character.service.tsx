@@ -27,3 +27,8 @@ const characterService = {
 export {
     characterService
 }
+
+
+//https://rickandmortyapi.com/api/character/?name=rick&status=alive
+//https://rickandmortyapi.com/api/location
+//https://rickandmortyapi.com/api/episode

@@ -8,16 +8,18 @@ import {fetchCharacters} from "../../store/slices/character.slice";
 
 
 const Home: FC = () => {
-    const {results, page, inputCurrent} = useSelector((store: RootState) => store.characters);
+    const {results, page, inputCurrent, word, checkboxName} = useSelector((store: RootState) => store.characters);
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (inputCurrent) {
             dispatch(fetchCharacters({page, inputCurrent}));
+        } else if (word) {
+            dispatch(fetchCharacters({page, word}));
         } else {
             dispatch(fetchCharacters({page}));
         }
-    }, [page]);
+    }, [dispatch, inputCurrent, page, word, checkboxName]);
 
 
     return (
