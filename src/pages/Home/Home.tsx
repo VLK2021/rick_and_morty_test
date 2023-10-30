@@ -2,19 +2,22 @@ import React, {FC, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
 import './HomeStyle.css';
-import {getAllCharacters} from "../../store/slices/character.slice";
 import {RootState} from '../../store';
 import {Character, Pagination, Search} from "../../components";
+import {fetchCharacters} from "../../store/slices/character.slice";
 
 
 const Home: FC = () => {
-    const {results, page} = useSelector((store: RootState) => store.characters);
+    const {results, page, inputCurrent} = useSelector((store: RootState) => store.characters);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllCharacters({page}));
+        if (inputCurrent) {
+            dispatch(fetchCharacters({page, inputCurrent}));
+        } else {
+            dispatch(fetchCharacters({page}));
+        }
     }, [page]);
-
 
 
     return (

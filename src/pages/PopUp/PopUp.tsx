@@ -1,10 +1,10 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useForm} from "react-hook-form";
 import {useSearchParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 import './PopUpStyle.css';
-import {useDispatch, useSelector} from "react-redux";
-import {characterActions, filterCharacters} from "../../store/slices/character.slice";
+import {characterActions, fetchCharacters} from "../../store/slices/character.slice";
 import {RootState} from "../../store";
 
 
@@ -50,7 +50,7 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
 
     useEffect(() => {
         const word = query.toString();
-        dispatch(filterCharacters({page, word}));
+        dispatch(fetchCharacters({page, word}));
         dispatch(characterActions.changeWord(word));
     }, [query]);
 

@@ -11,7 +11,9 @@ const Layout: FC = () => {
             <Header/>
 
             <div className={'layout-outlet width'}>
-                <Outlet/>
+                {/*<Suspense fallback={<p>....loading</p>}>*/}
+                    <Outlet/>
+                {/*</Suspense>*/}
             </div>
 
             <Footer/>

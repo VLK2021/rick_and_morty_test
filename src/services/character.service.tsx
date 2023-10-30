@@ -7,8 +7,8 @@ const characterService = {
         .get(`${urls.characters}/?page=${page}&list=20`)
         .then(value => value.data),
 
-    searchCharacters: (page: number, name: string): IRes<{}> => axiosService
-        .get(`${urls.characters}/?page=${page}&list=20&name=${name}`)
+    searchCharacters: (page: number, inputCurrent: string): IRes<{}> => axiosService
+        .get(`${urls.characters}/?page=${page}&list=20&name=${inputCurrent}`)
         .then(value => value.data),
 
     filteredSearchCharacters: (page:number, word:string): IRes<{}> => axiosService
