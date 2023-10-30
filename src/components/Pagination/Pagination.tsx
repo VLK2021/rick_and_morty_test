@@ -46,20 +46,20 @@ const Pagination = () => {
         // Динамічна зміна сторінок
         if (page > endPage && page < pagesCount && (pagesCount - page) <= 9) {
             setStartPage(page);
-            setEndPage(pagesCount -1);
+            setEndPage(pagesCount - 1);
         }
-        if(page > endPage && page < pagesCount && (pagesCount - page) > 9) {
+        if (page > endPage && page < pagesCount && (pagesCount - page) > 9) {
             setStartPage(page);
             setEndPage(page + 9);
         }
         //===========================================================================
         if (page < startPage && page > 1) {
-                setEndPage(page);
-                setStartPage(page - 9);
-            }
+            setEndPage(page);
+            setStartPage(page - 9);
+        }
 
 
-        if(inputCurrent) {
+        if (inputCurrent) {
             dispatch(fetchCharacters({page, inputCurrent}));
         } else if (word && checkboxName) {
             dispatch(fetchCharacters({page, word, checkboxName}));
@@ -69,7 +69,6 @@ const Pagination = () => {
 
         setPage(page);
     };
-
 
 
     return (

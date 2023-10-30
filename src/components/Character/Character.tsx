@@ -27,7 +27,7 @@ const Character: FC<IProps> = ({char}) => {
                 </div>
 
                 <div className={'character-info'}>
-                    <NavLink to={char.id.toString()} className={'width'}>
+                    <NavLink to={char.id?.toString()} className={'width'}>
                         <p className={'width character-info-name'}>{char.name}</p>
                     </NavLink>
 
@@ -40,6 +40,7 @@ const Character: FC<IProps> = ({char}) => {
                         <p>{char.species}</p>
                     </div>
 
+                    {char.location &&
                     <div className={'character-info-location width'}>
                         <p className={'character-info-location-text width'}>
                             Last known location:
@@ -48,7 +49,9 @@ const Character: FC<IProps> = ({char}) => {
                             {char.location.name}
                         </p>
                     </div>
+                    }
 
+                    {char.origin &&
                     <div className={'character-info-seen width'}>
                         <p className={'character-info-seen-text width'}>
                             First seen in:
@@ -57,6 +60,7 @@ const Character: FC<IProps> = ({char}) => {
                             {char.origin.name}
                         </p>
                     </div>
+                    }
                 </div>
             </>}
         </div>

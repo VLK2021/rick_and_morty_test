@@ -73,7 +73,6 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
         }
     };
 
-
     const close = () => {
         setVisibleCheckbox(!visibleCheckbox);
     }

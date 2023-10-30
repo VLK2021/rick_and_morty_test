@@ -42,7 +42,7 @@ const Search = () => {
         setVisibleCheckbox(!visibleCheckbox);
     }
 
-    const handleOnChangeInput = (e:any) => {
+    const handleOnChangeInput = (e: any) => {
 
     }
 
@@ -58,11 +58,13 @@ const Search = () => {
                 <div className={'search-second flex'}>
                     <button className={'select'} onClick={handlerCheckbox}>Вибрати опції</button>
 
-                    {visibleCheckbox && <PopUp setVisibleCheckbox={setVisibleCheckbox} visibleCheckbox={visibleCheckbox}/>}
+                    {visibleCheckbox &&
+                    <PopUp setVisibleCheckbox={setVisibleCheckbox} visibleCheckbox={visibleCheckbox}/>}
 
                     <form onClick={handleSubmit(submit)}>
                         <input type="text" defaultValue={''}
-                               placeholder={'Add key words to find'} {...register('search')} onChange={handleOnChangeInput}/>
+                               placeholder={'Add key words to find'} {...register('search')}
+                               onChange={handleOnChangeInput}/>
 
                         <button>find</button>
                     </form>
