@@ -43,6 +43,17 @@ const Search: FC = () => {
                 message: 'Помилка вводу даних!',
             });
         }
+//працюємо з localStorage закидуємо дані
+        const dataInputSearchLS = localStorage.getItem('inputSearchLS');
+        if (dataInputSearchLS) {
+            const dataInputSearchLSArr = JSON.parse(dataInputSearchLS) ;
+            dataInputSearchLSArr.push(data.search);
+            localStorage.setItem('inputSearchLS', JSON.stringify(dataInputSearchLSArr));
+        } else {
+            const dataInputSearchLSArrNew = [];
+            dataInputSearchLSArrNew.push(data.search);
+            localStorage.setItem('inputSearchLS', JSON.stringify(dataInputSearchLSArrNew));
+        }
     };
 
 

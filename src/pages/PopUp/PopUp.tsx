@@ -31,7 +31,7 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
             dispatch(fetchCharacters({page, word, checkboxName}));
         }
         dispatch(characterActions.changeWord(word));
-    }, [dispatch, page, query]);
+    }, [checkboxName, dispatch, page, query]);
 
 
     const submit = (data: any) => {
@@ -39,13 +39,59 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
             if (data.name || data.episode) {
                 setQuery({name: data.name, episode: data.episode});
             }
+
+            //працюємо з localStorage і пушимо введені в інпут дані плюс перевіряємо на наявність масуву в сторідж
+            const dataInputEpisode = localStorage.getItem('inputEpisode');
+            const inputs = ['name', 'episode'];
+
+            if (dataInputEpisode) {
+                const dataInputEpisodeNew = JSON.parse(dataInputEpisode);
+                inputs.forEach((obj) => {
+                    if (data[obj] && data[obj].length > 1) {
+                        dataInputEpisodeNew.push({[obj]: data[obj]});
+                    }
+                });
+                localStorage.setItem('inputEpisode', JSON.stringify(dataInputEpisodeNew));
+            } else {
+                const dataEpisodeNew: { [x: string]: any; }[] = [];
+                inputs.forEach((obj) => {
+                    if (data[obj] && data[obj].length > 1) {
+                        dataEpisodeNew.push({[obj]: data[obj]});
+                    }
+                });
+                localStorage.setItem('inputEpisode', JSON.stringify(dataEpisodeNew));
+            }
         }
+
         if (data.location === true) {
             if (data.name || data.type || data.dimension) {
                 setQuery({name: data.name, type: data.type, dimension: data.dimension});
             }
+//працюємо з localStorage і пушимо введені в інпут дані плюс перевіряємо на наявність масуву в сторідж
+            const dataInputLocation = localStorage.getItem('inputLocation');
+            const inputs = ['name', 'type', 'dimension'];
+
+            if (dataInputLocation) {
+                const dataInputLocationNew = JSON.parse(dataInputLocation);
+                inputs.forEach((obj) => {
+                    if (data[obj] && data[obj].length > 1) {
+                        dataInputLocationNew.push({[obj]: data[obj]});
+                    }
+                });
+                localStorage.setItem('inputLocation', JSON.stringify(dataInputLocationNew));
+            } else {
+                const dataLocationNew: { [x: string]: any; }[] = [];
+                inputs.forEach((obj) => {
+                    if (data[obj] && data[obj].length > 1) {
+                        dataLocationNew.push({[obj]: data[obj]});
+                    }
+                });
+                localStorage.setItem('inputLocation', JSON.stringify(dataLocationNew));
+            }
         }
+
         if (data.character === true) {
+            //додаємо дані в урлу
             if (data.name || data.status || data.species || data.type || data.gender) {
                 setQuery({
                     name: data.name,
@@ -54,6 +100,28 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
                     type: data.type,
                     gender: data.gender
                 });
+            }
+
+            //працюємо з localStorage і пушимо введені в інпут дані плюс перевіряємо на наявність масуву в сторідж
+            const dataInputCharacter = localStorage.getItem('inputCharacter');
+            const inputs = ['name', 'status', 'species', 'type', 'gender'];
+
+            if (dataInputCharacter) {
+                const dataInputCharacterNew = JSON.parse(dataInputCharacter);
+                inputs.forEach((obj) => {
+                    if (data[obj] && data[obj].length > 1) {
+                        dataInputCharacterNew.push({[obj]: data[obj]});
+                    }
+                });
+                localStorage.setItem('inputCharacter', JSON.stringify(dataInputCharacterNew));
+            } else {
+                const dataCharacterNew: { [x: string]: any; }[] = [];
+                inputs.forEach((obj) => {
+                    if (data[obj] && data[obj].length > 1) {
+                        dataCharacterNew.push({[obj]: data[obj]});
+                    }
+                });
+                localStorage.setItem('inputCharacter', JSON.stringify(dataCharacterNew));
             }
         }
     }
