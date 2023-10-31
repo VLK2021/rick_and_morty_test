@@ -1,22 +1,36 @@
-import React, {FC, Suspense} from 'react';
+import React, {FC, Suspense, useState} from 'react';
 import {Outlet} from 'react-router-dom';
 
 import './LayoutStyle.css';
-import {Footer, Header, Spinner} from "../components";
+import {FabComponent, Footer, Header, Spinner} from "../components";
 
 
-const Layout: FC = () => {
+interface LayoutProps {
+
+}
+
+
+const Layout: FC<LayoutProps> = () => {
+    const [visibleFabMenu, setVisibleFabMenu] = useState<boolean>(true);
+
+
     return (
         <div className={'layout width flex-direction'}>
-            <Header/>
+            <Suspense fallback={<div><Spinner/></div>}>
+                <Header/>
 
-            <div className={'layout-outlet width'}>
-                <Suspense fallback={<div><Spinner/></div>}>
+                <div className={'layout-outlet width'}>
                     <Outlet/>
-                </Suspense>
-            </div>
+                </div>
 
-            <Footer/>
+                {visibleFabMenu && <div className={'menu'}>
+
+                </div>}
+
+                <FabComponent visibleFabMenu={visibleFabMenu} setVisibleFabMenu={setVisibleFabMenu}/>
+
+                <Footer/>
+            </Suspense>
         </div>
     );
 };

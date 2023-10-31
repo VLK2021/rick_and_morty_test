@@ -5,3 +5,12 @@
 .layout-outlet {
     background: var(--var-bg);
 }
+
+.menu{
+    width: 5rem;
+    height: 5rem;
+    background: #D81219;
+    position: fixed;
+    bottom: 7rem;
+    right: 3rem;
+}
