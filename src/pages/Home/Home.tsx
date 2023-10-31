@@ -23,6 +23,7 @@ const Home: FC = () => {
     }, [dispatch, inputCurrent, page, word]);
 
 
+
     return (
         <div className={'home width'}>
             <div className={'home-search'}>
