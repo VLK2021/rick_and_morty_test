@@ -23,21 +23,21 @@ const Home: FC = () => {
     }, [dispatch, inputCurrent, page, word]);
 
 
-
     return (
-        <div className={'home width'}>
-            <div className={'home-search'}>
-                <Search/>
-            </div>
+            <div className={'home width'}>
 
-            <div className={'home-characters-block width'}>
-                {results && results.map(obj => <Character key={obj.id} char={obj}/>)}
-            </div>
+                <div className={'home-search'}>
+                    <Search/>
+                </div>
 
-            <div className={'home-pagination flex'}>
-                <Pagination/>
+                <div className={'home-characters-block width'}>
+                    {results && results.map(obj => <Character key={obj.id} char={obj}/>)}
+                </div>
+
+                <div className={'home-pagination flex'}>
+                    <Pagination/>
+                </div>
             </div>
-        </div>
     );
 };
 

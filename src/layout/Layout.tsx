@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
+import React, {FC, Suspense} from 'react';
 import {Outlet} from 'react-router-dom';
 
 import './LayoutStyle.css';
-import {Footer, Header} from "../components";
+import {Footer, Header, Spinner} from "../components";
 
 
 const Layout: FC = () => {
@@ -11,9 +11,9 @@ const Layout: FC = () => {
             <Header/>
 
             <div className={'layout-outlet width'}>
-                {/*<Suspense fallback={<p>....loading</p>}>*/}
+                <Suspense fallback={<div><Spinner/></div>}>
                     <Outlet/>
-                {/*</Suspense>*/}
+                </Suspense>
             </div>
 
             <Footer/>
