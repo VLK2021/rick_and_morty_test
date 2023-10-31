@@ -7,10 +7,18 @@
 }
 
 .menu{
-    width: 5rem;
-    height: 5rem;
-    background: #D81219;
     position: fixed;
-    bottom: 7rem;
-    right: 3rem;
+    bottom: 8rem;
+    right: 4rem;
+}
+
+.layout-history{
+    width: 15rem;
+    height: 10rem;
+    position: fixed;
+    bottom: 15rem;
+    right: 0;
+    background: var(--var-bg-header);
+    color: var(--var-bg-character);
+    border-radius: 0.5rem 0 0 0.5rem;
 }
