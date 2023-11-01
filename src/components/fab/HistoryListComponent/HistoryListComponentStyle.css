@@ -40,4 +40,5 @@ h5{
     background: var(--var-bg-header);
     font-size: 1rem;
     border: none;
+    cursor: pointer;
 }

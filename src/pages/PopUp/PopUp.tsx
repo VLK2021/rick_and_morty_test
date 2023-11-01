@@ -48,7 +48,7 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
             //             }
             //         });
             // dispatch(characterActions.changeQueries(dataEpisodeNew));
-
+            //працюємо з localStorage і пушимо введені в інпут дані плюс перевіряємо на наявність масуву в сторідж
             const dataInputEpisode = localStorage.getItem('inputEpisode');
             const inputs = ['name', 'episode'];
 
@@ -117,7 +117,6 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
                     gender: data.gender
                 });
             }
-
             //працюємо з localStorage і пушимо введені в інпут дані плюс перевіряємо на наявність масуву в сторідж
             const dataInputCharacter = localStorage.getItem('inputCharacter');
             const inputs = ['name', 'status', 'species', 'type', 'gender'];
