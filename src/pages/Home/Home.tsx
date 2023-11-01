@@ -20,8 +20,8 @@ const Home: FC = () => {
         } else {
             dispatch(fetchCharacters({page}));
         }
-    }, [dispatch, inputCurrent, page, word]);
-
+    }, [checkboxName, dispatch, inputCurrent, page, word]);
+    
 
     return (
             <div className={'home width'}>

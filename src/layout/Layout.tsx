@@ -2,7 +2,7 @@ import React, {FC, Suspense, useState} from 'react';
 import {Outlet} from 'react-router-dom';
 
 import './LayoutStyle.css';
-import {FabComponent, Footer, Header, HistoryComponent, Spinner} from "../components";
+import {FabComponent, Footer, Header, HistoryComponent, HistoryListComponent, Spinner} from "../components";
 
 
 interface LayoutProps {
@@ -11,8 +11,8 @@ interface LayoutProps {
 
 
 const Layout: FC<LayoutProps> = () => {
-    const [visibleFabMenu, setVisibleFabMenu] = useState<boolean>(true);
-    const [visibleHistoryMenu, setVisibleHistoryMenu] = useState<boolean>(true);
+    const [visibleFabMenu, setVisibleFabMenu] = useState<boolean>(false);
+    const [visibleHistoryMenu, setVisibleHistoryMenu] = useState<boolean>(false);
 
 
     return (
@@ -25,11 +25,14 @@ const Layout: FC<LayoutProps> = () => {
                 </div>
 
                 {visibleHistoryMenu && <div className={'layout-history'}>
-
+                    <HistoryListComponent setVisibleHistoryMenu={setVisibleHistoryMenu}
+                                          />
                 </div>}
 
                 {visibleFabMenu && <div className={'menu'}>
-                    <HistoryComponent visibleHistoryMenu={visibleHistoryMenu} setVisibleHistoryMenu={setVisibleHistoryMenu}/>
+                    <HistoryComponent setVisibleHistoryMenu={setVisibleHistoryMenu}
+                                      setVisibleFabMenu={setVisibleFabMenu}
+                    />
                 </div>}
 
                 <FabComponent visibleFabMenu={visibleFabMenu}

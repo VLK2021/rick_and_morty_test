@@ -40,26 +40,38 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
                 setQuery({name: data.name, episode: data.episode});
             }
 
-            //працюємо з localStorage і пушимо введені в інпут дані плюс перевіряємо на наявність масуву в сторідж
+            // const inputs = ['name', 'episode'];
+            // const dataEpisodeNew: { [key: string]: string } = {};
+            // inputs.forEach((obj) => {
+            //             if (data[obj] && data[obj].length > 1) {
+            //                 dataEpisodeNew[obj] = data[obj];
+            //             }
+            //         });
+            // dispatch(characterActions.changeQueries(dataEpisodeNew));
+
             const dataInputEpisode = localStorage.getItem('inputEpisode');
             const inputs = ['name', 'episode'];
 
-            if (dataInputEpisode) {
-                const dataInputEpisodeNew = JSON.parse(dataInputEpisode);
+            if (dataInputEpisode){
+                const dataInputEpisodeNew: Array<{ [key: string]: string }> = JSON.parse(dataInputEpisode);
+                const dataEpisodeNew: { [key: string]: string } = {};
                 inputs.forEach((obj) => {
                     if (data[obj] && data[obj].length > 1) {
-                        dataInputEpisodeNew.push({[obj]: data[obj]});
+                        dataEpisodeNew[obj] = data[obj];
                     }
                 });
+                dataInputEpisodeNew.push(dataEpisodeNew);
                 localStorage.setItem('inputEpisode', JSON.stringify(dataInputEpisodeNew));
             } else {
-                const dataEpisodeNew: { [x: string]: any; }[] = [];
+                const dataEpisodeNeww: { [x: string]: any; }[] = [];
+                const dataEpisodeObj: { [key: string]: string } = {};
                 inputs.forEach((obj) => {
                     if (data[obj] && data[obj].length > 1) {
-                        dataEpisodeNew.push({[obj]: data[obj]});
+                        dataEpisodeObj[obj] = data[obj];
                     }
                 });
-                localStorage.setItem('inputEpisode', JSON.stringify(dataEpisodeNew));
+                dataEpisodeNeww.push(dataEpisodeObj);
+                localStorage.setItem('inputEpisode', JSON.stringify(dataEpisodeNeww));
             }
         }
 
@@ -72,21 +84,25 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
             const inputs = ['name', 'type', 'dimension'];
 
             if (dataInputLocation) {
-                const dataInputLocationNew = JSON.parse(dataInputLocation);
+                const dataInputLocationNew: Array<{ [key: string]: string }> = JSON.parse(dataInputLocation);
+                const dataLocationNew: { [key: string]: string } = {};
                 inputs.forEach((obj) => {
                     if (data[obj] && data[obj].length > 1) {
-                        dataInputLocationNew.push({[obj]: data[obj]});
+                        dataLocationNew[obj] = data[obj];
                     }
                 });
+                dataInputLocationNew.push(dataLocationNew);
                 localStorage.setItem('inputLocation', JSON.stringify(dataInputLocationNew));
             } else {
-                const dataLocationNew: { [x: string]: any; }[] = [];
+                const dataLocationNeww: { [x: string]: any; }[] = [];
+                const dataLocationObj: { [key: string]: string } = {};
                 inputs.forEach((obj) => {
                     if (data[obj] && data[obj].length > 1) {
-                        dataLocationNew.push({[obj]: data[obj]});
+                        dataLocationObj[obj] = data[obj];
                     }
                 });
-                localStorage.setItem('inputLocation', JSON.stringify(dataLocationNew));
+                dataLocationNeww.push(dataLocationObj);
+                localStorage.setItem('inputLocation', JSON.stringify(dataLocationNeww));
             }
         }
 
@@ -107,21 +123,25 @@ const PopUp: FC<PopUpProps> = ({setVisibleCheckbox, visibleCheckbox}) => {
             const inputs = ['name', 'status', 'species', 'type', 'gender'];
 
             if (dataInputCharacter) {
-                const dataInputCharacterNew = JSON.parse(dataInputCharacter);
+                const dataInputCharacterNew: Array<{ [key: string]: string }> = JSON.parse(dataInputCharacter);
+                const dataCharacterNew: { [key: string]: string } = {};
                 inputs.forEach((obj) => {
                     if (data[obj] && data[obj].length > 1) {
-                        dataInputCharacterNew.push({[obj]: data[obj]});
+                        dataCharacterNew[obj] = data[obj];
                     }
                 });
+                dataInputCharacterNew.push(dataCharacterNew);
                 localStorage.setItem('inputCharacter', JSON.stringify(dataInputCharacterNew));
             } else {
-                const dataCharacterNew: { [x: string]: any; }[] = [];
+                const dataCharacterNeww: { [x: string]: any; }[] = [];
+                const dataCharacterObj: { [key: string]: string } = {};
                 inputs.forEach((obj) => {
                     if (data[obj] && data[obj].length > 1) {
-                        dataCharacterNew.push({[obj]: data[obj]});
+                        dataCharacterObj[obj] = data[obj];
                     }
                 });
-                localStorage.setItem('inputCharacter', JSON.stringify(dataCharacterNew));
+                dataCharacterNeww.push(dataCharacterObj);
+                localStorage.setItem('inputCharacter', JSON.stringify(dataCharacterNeww));
             }
         }
     }

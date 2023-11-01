@@ -4,24 +4,24 @@ import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
 import ReorderIcon from '@mui/icons-material/Reorder';
 
 import './HistoryComponentStyle.css';
-import ClearIcon from "@mui/icons-material/Clear";
 
 
 interface HistoryComponent {
-    visibleHistoryMenu: boolean;
     setVisibleHistoryMenu: any;
+    setVisibleFabMenu: any;
 }
 
-const HistoryComponent: FC<HistoryComponent> = ({visibleHistoryMenu, setVisibleHistoryMenu}) => {
+const HistoryComponent: FC<HistoryComponent> = ({setVisibleHistoryMenu, setVisibleFabMenu}) => {
 
     const toggleHistory = () => {
-        setVisibleHistoryMenu(!visibleHistoryMenu);
+        setVisibleHistoryMenu(true);
+        setVisibleFabMenu(false);
     }
 
     return (
         <div className={'historyComponent width flex-direction'}>
             <Fab size="small" className={'fabComponent-color'} aria-label="add" onClick={toggleHistory}>
-                {visibleHistoryMenu ? <ClearIcon/> : <ReorderIcon/>}
+                <ReorderIcon/>
             </Fab>
 
             <Fab size="small" className={'fabComponent-color'} aria-label="add">

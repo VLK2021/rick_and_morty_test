@@ -46,6 +46,7 @@ export interface CharacterState {
     inputCurrent: string;
     word: string;
     checkboxName: string;
+    queries: {};
     status: 'idle' | 'loading' | 'fulfilled' | 'rejected';
     error: string;
 }
@@ -60,6 +61,7 @@ const initialState: CharacterState = {
     inputCurrent: '',
     word: '',
     checkboxName: '',
+    queries: {},
     status: 'idle',
     error: '',
 };
@@ -80,6 +82,9 @@ const characterSlice = createSlice({
         changeCheckboxName: (state, action) => {
             state.checkboxName = action.payload;
         },
+        changeQueries: (state, action) => {
+            state.queries = action.payload;
+        }
     },
 
     extraReducers: (builder) => {
@@ -102,8 +107,8 @@ const characterSlice = createSlice({
 
 });
 
-const {actions: {changeName, changeWord, changeCheckboxName}} = characterSlice;
-const characterActions = {changeName, changeWord, changeCheckboxName};
+const {actions: {changeName, changeWord, changeCheckboxName, changeQueries}} = characterSlice;
+const characterActions = {changeName, changeWord, changeCheckboxName, changeQueries};
 
 export {characterActions};
 export default characterSlice.reducer;

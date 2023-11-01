@@ -7,3 +7,4 @@ export * from './NotFoundPage/NotFoundPage';
 export * from './Spinner/Spinner';
 export * from './fab/Fab/FabComponent';
 export * from './fab/HistoryComponent/HistoryComponent';
+export * from './fab/HistoryListComponent/HistoryListComponent';

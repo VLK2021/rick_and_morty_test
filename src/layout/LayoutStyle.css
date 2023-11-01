@@ -13,10 +13,9 @@
 }
 
 .layout-history{
-    width: 15rem;
-    height: 10rem;
+    width: 20rem;
     position: fixed;
-    bottom: 15rem;
+    bottom: 8rem;
     right: 0;
     background: var(--var-bg-header);
     color: var(--var-bg-character);

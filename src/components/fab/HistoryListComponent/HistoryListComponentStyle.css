@@ -1,0 +1,43 @@
+.historyListComponent {
+    align-items: start;
+    padding: 0 0.5rem;
+}
+
+h3 {
+    margin: 0.5rem;
+    text-transform: uppercase;
+}
+
+h5{
+
+}
+
+.historyListComponent-search, .historyListComponent-character, .historyListComponent-location, .historyListComponent-episode {
+    align-items: start;
+}
+
+.historyListComponent-search {
+
+}
+
+.historyListComponent-character {
+
+}
+
+.historyListComponent-location {
+
+}
+
+.historyListComponent-episode {
+
+}
+
+.historyListComponent > button {
+    padding: 0;
+    margin: 0.5rem;
+    width: 5rem;
+    color: darkturquoise;
+    background: var(--var-bg-header);
+    font-size: 1rem;
+    border: none;
+}
