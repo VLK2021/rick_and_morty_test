@@ -45,8 +45,8 @@ export interface CharacterState {
     page: number;
     inputCurrent: string;
     word: string;
+    csvFile: any;
     checkboxName: string;
-    queries: {};
     status: 'idle' | 'loading' | 'fulfilled' | 'rejected';
     error: string;
 }
@@ -60,8 +60,8 @@ const initialState: CharacterState = {
     page: 1,
     inputCurrent: '',
     word: '',
+    csvFile: null,
     checkboxName: '',
-    queries: {},
     status: 'idle',
     error: '',
 };
@@ -82,8 +82,8 @@ const characterSlice = createSlice({
         changeCheckboxName: (state, action) => {
             state.checkboxName = action.payload;
         },
-        changeQueries: (state, action) => {
-            state.queries = action.payload;
+        changeCSV: (state, action) => {
+            state.csvFile = action.payload;
         }
     },
 
@@ -107,8 +107,8 @@ const characterSlice = createSlice({
 
 });
 
-const {actions: {changeName, changeWord, changeCheckboxName, changeQueries}} = characterSlice;
-const characterActions = {changeName, changeWord, changeCheckboxName, changeQueries};
+const {actions: {changeName, changeWord, changeCheckboxName, changeCSV}} = characterSlice;
+const characterActions = {changeName, changeWord, changeCheckboxName, changeCSV};
 
 export {characterActions};
 export default characterSlice.reducer;
