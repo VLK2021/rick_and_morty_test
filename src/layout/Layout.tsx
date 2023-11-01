@@ -26,7 +26,7 @@ const Layout: FC<LayoutProps> = () => {
 
                 {visibleHistoryMenu && <div className={'layout-history'}>
                     <HistoryListComponent setVisibleHistoryMenu={setVisibleHistoryMenu}
-                                          />
+                    />
                 </div>}
 
                 {visibleFabMenu && <div className={'menu'}>

@@ -1,40 +1,31 @@
 .historyListComponent {
+    height: 100%;
     align-items: start;
-    padding: 0 0.5rem;
+    padding: 1rem 0.5rem;
+    overflow: auto;
 }
 
 h3 {
     margin: 0.5rem;
     text-transform: uppercase;
+    font-weight: bold;
+    color: var(--var-bg);
 }
 
-h5{
-
+h5 {
+    margin: 0.5rem;
+    text-decoration: underline;
+    font-weight: bold;
+    color: var(--var-bg);
 }
 
 .historyListComponent-search, .historyListComponent-character, .historyListComponent-location, .historyListComponent-episode {
     align-items: start;
 }
 
-.historyListComponent-search {
-
-}
-
-.historyListComponent-character {
-
-}
-
-.historyListComponent-location {
-
-}
-
-.historyListComponent-episode {
-
-}
-
 .historyListComponent > button {
     padding: 0;
-    margin: 0.5rem;
+    margin: 1rem 0.5rem;
     width: 5rem;
     color: darkturquoise;
     background: var(--var-bg-header);

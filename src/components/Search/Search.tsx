@@ -17,8 +17,10 @@ const Search: FC = () => {
     const [visible, setVisible] = useState(false);
     const [visibleCheckbox, setVisibleCheckbox] = useState(false);
 
-    const {register, handleSubmit, setError, trigger, clearErrors, setValue,
-        formState: {errors, isValid}} = useForm<FormData>({mode: "onBlur"});
+    const {
+        register, handleSubmit, setError, trigger, clearErrors, setValue,
+        formState: {errors, isValid}
+    } = useForm<FormData>({mode: "onBlur"});
 
     const [query, setQuery] = useSearchParams();
     const dispatch = useDispatch();
@@ -36,7 +38,7 @@ const Search: FC = () => {
 
     const submit = (data: FormData) => {
         if (isValid) {
-            setQuery({ inputCurrent: data.search });
+            setQuery({inputCurrent: data.search});
         } else {
             setError('search', {
                 type: 'manual',
@@ -46,7 +48,7 @@ const Search: FC = () => {
 //працюємо з localStorage закидуємо дані
         const dataInputSearchLS = localStorage.getItem('inputSearchLS');
         if (dataInputSearchLS) {
-            const dataInputSearchLSArr = JSON.parse(dataInputSearchLS) ;
+            const dataInputSearchLSArr = JSON.parse(dataInputSearchLS);
             dataInputSearchLSArr.push(data.search);
             localStorage.setItem('inputSearchLS', JSON.stringify(dataInputSearchLSArr));
         } else {
@@ -55,7 +57,6 @@ const Search: FC = () => {
             localStorage.setItem('inputSearchLS', JSON.stringify(dataInputSearchLSArrNew));
         }
     };
-
 
 
     const click = () => {
